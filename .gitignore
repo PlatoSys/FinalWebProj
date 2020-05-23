@@ -1,0 +1,7 @@
+.idea
+/vendor/
+/controllers/database.php
+views/Images/img_avatar.png
+/views/Images
+config.php
+/views/Events

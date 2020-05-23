@@ -1,0 +1,19 @@
+{
+    "name": "thinkpad/moodle",
+    "authors": [
+        {
+            "name": "PlatoSys",
+            "email": "platoniinjgia@gmail.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*",
+      "ext-json": "*",
+        "phpmailer/phpmailer": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "."
+        }
+    }
+}
