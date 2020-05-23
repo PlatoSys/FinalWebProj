@@ -4,6 +4,7 @@ require_once __DIR__."/vendor/autoload.php";
 
 use app\controllers\EventController;
 use app\controllers\HomeController;
+use app\controllers\HomeworkController;
 use app\controllers\LoginController;
 use app\controllers\ProfileController;
 use app\controllers\RegisterController;
@@ -38,13 +39,20 @@ $router->post('/register',[RegisterController::class,'register']);
 
 $router->get('/homework','homework');
 
-$router->get('/homework', [HomeController::class,'homework']);
+$router->get('/homework', [HomeworkController::class,'homework']);
 
 
 $router->get('/profile','profile');
 
 $router->post('/profile',[ProfileController::class,'profile']);
 
+$router->get('/password','/password');
+
+$router->post('/password',[ProfileController::class,'password']);
+
+$router->get('/picture','/picture');
+
+$router->post('/picture',[ProfileController::class,'picture']);
 
 $router->resolve();
 

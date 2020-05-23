@@ -43,6 +43,8 @@ class Router
             $path = '/login';
         }
 
+
+
         if($method === 'get')  {
             $closureOrView = $this->routes[$path] ?? false ;
         } else {
@@ -50,7 +52,6 @@ class Router
         }
 
         if($closureOrView) {
-
             if(is_callable($closureOrView)) {
                 echo call_user_func($closureOrView, $this->request,$this);
             } else {

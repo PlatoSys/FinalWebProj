@@ -62,6 +62,15 @@ class database
         } else return $user;
     }
 
+    public function NewPass($dbemail,$dbpassword){
+        $statement = $this->pdo->prepare("UPDATE Moodle.Students
+                                                        SET password = :password
+                                                        WHERE email = :email");
+        $statement->bindValue(':email',$dbemail);
+        $statement->bindValue(':password',$dbpassword);
+        return $statement->execute();
+    }
+
     public function getEvents(){
         $statement = $this->pdo->prepare("select * from Events e
                                                 inner join Students s on s.email = e.email
@@ -140,11 +149,13 @@ class database
         return $statement->execute();
     }
 
-    public function getTasks($subject)
+    public function getTasks()
     {
-        $statement = $this->pdo->prepare("select * FROM Moodle.Tasks
-                                                            where subject = :subject;");
-        $statement->bindValue(':subject',$subject);
+        $statement = $this->pdo->prepare("select * FROM Moodle.Tasks;");
+//        $statement->bindValue(':subject',$subject);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
 }

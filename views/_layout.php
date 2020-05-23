@@ -13,7 +13,6 @@ if(!$_COOKIE['firstname']){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>App</title>
     <script src="/views/jquery-3.5.0.js"></script>
     <script src="/views/addSubject.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -25,7 +24,12 @@ if(!$_COOKIE['firstname']){
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script type="text/javascript" src="jquery-3.5.0.js"></script>
     <style>
-
+        .oldpass {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
         input[type=text], select {
             width: 60%;
             padding: 12px 20px;
@@ -47,6 +51,16 @@ if(!$_COOKIE['firstname']){
             cursor: pointer;
         }
 
+        .taskbtn {
+            background-color: #42a8ff;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            cursor: pointer;
+        }
         input[type=submit]:hover {
             background-color:  #42a8ff;
         }
