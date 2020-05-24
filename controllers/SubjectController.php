@@ -28,7 +28,6 @@ class SubjectController
             foreach ($subj as $item){
                 $info->addSubject($_COOKIE['email'],$item);
             }
-            unset($_COOKIE['gfg']);
         }
 
 

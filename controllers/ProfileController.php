@@ -59,7 +59,7 @@ class ProfileController
         $data = $request->getBody();
         $errors = [];
 
-        $filepath = "views/Images/" . $_COOKIE['email'] . '.png';
+        $filepath = "../public/Images/" . $_COOKIE['email'] . '.png';
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)){
             $temp  = true;
         };

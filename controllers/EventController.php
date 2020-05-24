@@ -18,12 +18,6 @@ class EventController
 
         $info = new database();
 
-//        $filename = 'C:\xampp\htdocs\Final\views\Events/' . trim($_POST['eventname']). '.php';
-
-        $content2 = "
-        <?php
-        include_once '../views/_layout.php'; ?>";
-
         $info->createEvent($_COOKIE['email'],$data['eventname'],$data['duration'],$data['eventdate'],$data['time']);
 
         return $router->renderView('createevent',$params);

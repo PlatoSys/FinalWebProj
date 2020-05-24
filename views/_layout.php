@@ -3,9 +3,7 @@ use app\controllers\HomeController;
 if(!$_COOKIE['firstname']){
     header("Location: http://localhost:8080/login");
 }
-//if(isset($_POST['profilebtn'])){
-//    header("Location: http://localhost:8080/profile");
-//}
+
 ?>
 
 
@@ -13,8 +11,6 @@ if(!$_COOKIE['firstname']){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="/views/jquery-3.5.0.js"></script>
-    <script src="/views/addSubject.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -22,7 +18,6 @@ if(!$_COOKIE['firstname']){
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script type="text/javascript" src="jquery-3.5.0.js"></script>
     <style>
         .oldpass {
             display: flex;
@@ -450,8 +445,8 @@ if(!$_COOKIE['firstname']){
     <div class="profile-nav">
         <div class="profile-nav-bar">
             <div class="profile-picture-bar">
-                <img src="../views/Images/<?php
-                if(file_exists("C:/xampp/htdocs\Final/views\Images/". $_COOKIE['email'] . '.png'))
+                <img src="/Images/<?php
+                if(file_exists("Images/". $_COOKIE['email'] . '.png'))
                     echo $_COOKIE['email'] . '.png';
                 else echo 'img_avatar.png';
                 ?>" alt="Profile Picture" height="200" width="200">

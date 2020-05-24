@@ -1,4 +1,5 @@
 <title>Subject</title>
+<script src="addSubject.js"></script>
  <div class="dashboard">
         <div class="dashboard-bar">
             <h>Courses</h>
@@ -23,7 +24,6 @@
             </div>
         </form>
     </div>
-
 
 </div>
 
