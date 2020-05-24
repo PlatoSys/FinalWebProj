@@ -1,3 +1,4 @@
+<title>Profile</title>
 <div class="dashboard">
     <div class="dashboard-bar">
         <h id="head">Profile</h>

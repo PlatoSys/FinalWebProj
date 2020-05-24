@@ -1,3 +1,4 @@
+<title>Event</title>
 <div class="dashboard">
     <div class="dashboard-bar">
         <h id="head">Create Event</h>
@@ -7,11 +8,8 @@
                     <input type="text" id="fname" name="eventname" placeholder="Event Name"> <br>
                     <label for="lname">Event Duration</label> <br>
                     <input type="text" id="lname" name="duration" placeholder="Enter Event duration in minutes">
-                    <br>
-                    <label for="lname">Event Details</label> <br>
-                    <input type="text" id="lname" name="eventdetail" placeholder="Enter Event duration in minutes">
-                    <br>
-                    <label for="dateofbirth">Date Of Birth</label> <br>
+
+                    <label for="dateofbirth">Event Date</label> <br>
                     <input type="date" name="eventdate" id="date"> <br>
                     <label for="appt">Choose a time for your Event:</label>
                     <br>

@@ -10,17 +10,14 @@ $del = $events->checkPastEvents();
 $del = $events->removePastEvents();
 
 
-
-
 $event = $events->getEvents();
-
 $str = '.php';
 
 for ($i = 0; $i < sizeof($event); $i++) {
     echo
         '<div class="event">
-                <a href="/" target="_blank">' . $event[$i]['eventname'] .
-        '</a></>
+               <h1></h1> <a href="/" target="_blank">' . $event[$i]['eventname'] .
+        '</a></h1></>
                 <div class="date">
                     <h>Event Date:' . strval($event[$i]['eventdate']) .
         '</h>

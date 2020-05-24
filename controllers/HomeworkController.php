@@ -8,6 +8,7 @@ use app\Router;
 
 class HomeworkController
 {
+
     public function homework(IRequest $request,Router $router)
     {
         $data = $request->getBody();
@@ -17,13 +18,22 @@ class HomeworkController
         $subj = $subj->getSubject($_COOKIE['email']);
         $data = $subj;
 
+
         $tasks = new database();
         $tasks = $tasks->getTasks();
 
-        if(isset($_POST['taskbtn'])){
+        if(isset($_POST['taskaddbtn'])){
             $info = new database();
-            $info->addTask($_COOKIE['email'],$_POST['hidesubj'],$_POST['taskname'],$_POST['taskdetails'],$_POST['deadlinedate'],$_POST['deadlinetime']);
+            $info->addTask($_COOKIE['email'],$_POST['subjectselection'],$_POST['taskname'],$_POST['deadline']);
         }
+
+        $filepath = "views/homework/" . $_COOKIE['email'] . $_POST['taskname'] . '.pdf';
+        if(isset($_FILES["file"]["tmp_name"])){
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)){
+                $temp  = true;
+            };
+        }
+
 
 
         $params = [
@@ -31,7 +41,6 @@ class HomeworkController
             'data' => $data,
             'task' => $tasks
         ];
-
         return $router->renderView('homework',$params);
     }
 

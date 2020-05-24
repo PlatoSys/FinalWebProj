@@ -24,8 +24,7 @@ class EventController
         <?php
         include_once '../views/_layout.php'; ?>";
 
-        $data['eventname'] = "";
-        $info->createEvent($_COOKIE['email'],$data['eventname'],$data['duration'],$data['eventdate'],$data['time'],$data['eventdetail']);
+        $info->createEvent($_COOKIE['email'],$data['eventname'],$data['duration'],$data['eventdate'],$data['time']);
 
         return $router->renderView('createevent',$params);
     }

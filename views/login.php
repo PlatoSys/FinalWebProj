@@ -1,3 +1,4 @@
+<title>Log In</title>
 <form method="POST" action="/login" novalidate>
     <div class="container forlogin">
         <div class="form-group col-md-3 mt-3 nav-justified">

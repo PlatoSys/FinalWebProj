@@ -2,78 +2,82 @@
 <div class="dashboard">
     <div class="dashboard-bar">
         <h id="head">Homework</h>
-            <form method="POST" action="/homework">
             <?php
-            if(!isset($data)){
-                $data = [];
-            };
+            $task = new \app\database\database();
+            $subj = $task->getSubject($_COOKIE['email']);
+            $task = $task->getTasks();
+
+
             if($_COOKIE['status'] == 'Student'){
-                                                echo "<table class=\"table\">
-    <thead>
-    <tr>
-        <th scope=\"col\">Task Name</th>
-        <th scope=\"col\">Subject</th>
-        <th scope=\"col\">Your File</th>
-        <th scope=\"col\">Upload</th>
-    </tr>
-    </thead>
-    <tbody>";
+                echo "<table class=\"table\">
+                        <thead>
+                        <tr>
+                        <th scope=\"col\">Task Name</th>
+                        <th scope=\"col\">Subject</th>
+                        <th scope=\"col\">Your File</th>
+                        <th scope=\"col\">Upload</th>
+                        </tr>
+                        </thead>
+                        <tbody>";
+                foreach ($subj as $key => $item){
+                    foreach ($task as $key1 => $item1){
+                        if($item1['subject'] == $item['subject']){
+//                                echo $item1['taskname'] . '   ' . $item1['subject'] .  '<br>';
+                            echo "<tr>";
+                            echo "<td>" . $item1['taskname'] . "</td>";
+                            echo "<td>" . $item1['subject'] . "</td>";
+                            echo "<td>";
+                            echo ' <form method="post" action="/homework" enctype="multipart/form-data" novalidate>
+            <div class="form-group col-sm-12 taskupload">
+                <div class="custom-file">
+                    <input type="hidden" value="'. $item1['taskname'] .'" name="taskname">
+                    <input type="file" name="file" class="custom-file-input" id="post_image"
+                           aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+</td>' ;
+                            echo "<td>" . " <button type=\"submit\" class=\"btn btn-primary\">Upload</button>    </form> " . "</td>";
 
-                for ($x = 0; $x < sizeof($data); $x++) {
-                    foreach ($data[$x] as $key => $value) {
-                        if ($key == 'subject')  {
-                                foreach ($task as $key1 => $value1){
-                                        if($value == $value1['subject']){
-                                            echo "    <tr>
-                                                    <th ". " " . "=\"row\">" . $value1['taskname'] . "</th>
-                                                    <td>". $value1['subject'] . " </td>
-                                                    <td><input type=\"file\" name=\"file\" ></td>
-                                                    <td><button type=\"submit\" class=\"taskbtn\">Upload</button></td>
-                                                </tr>";
-                                        }
-
-                                    }
-                                }
-                            }
                         }
-                                                echo "    </thead>
-                                                <tbody>
-                                            
-                                            
-                                            
-                                                </tbody>
-                                            </table>";
-
+                    }
                 }
-
+                echo "  
+                        </tbody>
+                           </table>";
+            } else {echo "
+           
+                    <form method='post' action='/homework'>
+            <div class=\"addtask\">
+                <div class=\"form-group col-sm-6\">
+                    <label for=\"exampleInputEmail1\">Task Name</label> <br>
+                    <input type=\"text\" class=\"form-control\" name='taskname' id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"Enter Task name\">
+                </div>
+                <div class=\"form-group col-sm-6\">
+                    <label for=\"exampleFormControlSelect1\">Select Subject</label>
+                    <select class=\"form-control\" name='subjectselection' id=\"exampleFormControlSelect1\">";
+                        foreach ($subj as $key => $value){
+                            echo "<option>" .  $value['subject'] . " </option>";
+                        }
+     echo " 
+                    </select>
+                </div>
+                <div class=\"form-group col-sm-6\">
+                    <label for=\"deadline\">Deadline</label> <br>
+                    <input type=\"date\" name=\"deadline\" id=\"date\"> <br>
+                </div>
+                <div class=\"form-group col-sm-6\">
+                    <button type=\"submit\" name=\"taskaddbtn\" class=\"btn btn-primary addtaskbtn\">Submit</button>
+                </div>
+            </div>
+        </form>
+        ";}
 
             ?>
-            </form>
-
-<!--        <div class="uploader">-->
-<!--            <form method="post" action="/homework">-->
-<!--                <h1>Upload your homework here</h1>-->
-<!--                <input type="submit" name="gela">eg</input>-->
-<!--                <input type="file" name="file"><br/>-->
-<!--            </form>-->
-<!--        </div>-->
-
-               </div>
 
 
-    <form method="post" action="/homework">
-        <div class="form-group col-sm-6 column">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group col-sm-6 column">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
 
+    </div>
 
 
 </div>

@@ -1,7 +1,4 @@
-<?php
-
-?>
-
+<title>Subject</title>
  <div class="dashboard">
         <div class="dashboard-bar">
             <h>Courses</h>

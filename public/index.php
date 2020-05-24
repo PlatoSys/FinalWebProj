@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__."/vendor/autoload.php";
+require_once __DIR__."/../vendor/autoload.php";
 
 use app\controllers\EventController;
 use app\controllers\HomeController;
@@ -39,20 +39,23 @@ $router->post('/register',[RegisterController::class,'register']);
 
 $router->get('/homework','homework');
 
-$router->get('/homework', [HomeworkController::class,'homework']);
+$router->post('/homework', [HomeworkController::class,'homework']);
 
 
 $router->get('/profile','profile');
 
 $router->post('/profile',[ProfileController::class,'profile']);
 
+
 $router->get('/password','/password');
 
 $router->post('/password',[ProfileController::class,'password']);
 
+
 $router->get('/picture','/picture');
 
 $router->post('/picture',[ProfileController::class,'picture']);
+
 
 $router->resolve();
 

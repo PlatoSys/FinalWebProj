@@ -100,15 +100,14 @@ class database
         return $statement->execute();
     }
 
-    public function createEvent($email,$eventname,$eventduration,$eventdate,$eventtime,$eventdetails){
-        $statement = $this->pdo->prepare("insert into Events (email,eventname,eventduration,eventdate,eventtime,eventdetail) 
-                                                    Values (:email, :eventname, :eventduration, :eventdate, :eventtime,:eventdetail)");
+    public function createEvent($email,$eventname,$eventduration,$eventdate,$eventtime){
+        $statement = $this->pdo->prepare("insert into Events (email,eventname,eventduration,eventdate,eventtime) 
+                                                    Values (:email, :eventname, :eventduration, :eventdate, :eventtime)");
         $statement->bindValue(':email',$email);
         $statement->bindValue(':eventname',$eventname);
         $statement->bindValue(':eventduration',$eventduration);
         $statement->bindValue(':eventdate',$eventdate);
         $statement->bindValue(':eventtime',$eventtime);
-        $statement->bindValue(':eventdetail',$eventdetails);
         return $statement->execute();
     }
 
@@ -137,14 +136,12 @@ class database
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addTask($email,$subject,$name,$detail,$date,$time){
-        $statement = $this->pdo->prepare("insert into Tasks (email,taskname,taskdetail,deadlinedate,deadlinetime,subject) 
-                                                    Values (:email, :name , :detail, :date, :time, :subject)");
+    public function addTask($email,$subject,$name,$date){
+        $statement = $this->pdo->prepare("insert into Tasks (email,taskname,deadlinedate,subject) 
+                                                    Values (:email, :name , :date, :subject)");
         $statement->bindValue(':email',$email);
         $statement->bindValue(':name',$name);
-        $statement->bindValue(':detail',$detail);
         $statement->bindValue(':date',$date);
-        $statement->bindValue(':time',$time);
         $statement->bindValue(':subject',$subject);
         return $statement->execute();
     }

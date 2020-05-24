@@ -1,3 +1,4 @@
+<title>Register</title>
 <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'] ?>" novalidate>
     <div class="form-group">
         <div class="back">

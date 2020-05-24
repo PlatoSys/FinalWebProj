@@ -39,7 +39,19 @@ if(!$_COOKIE['firstname']){
             border-radius: 4px;
             box-sizing: border-box;
         }
+        .taskupload {
+            z-index: 0;
+        }
+        .addtask {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
 
+        .addtaskbtn {
+            margin: 20px;
+            padding: 10px;
+        }
         input[type=submit] {
             width: 60%;
             background-color:  #42a8ff;
