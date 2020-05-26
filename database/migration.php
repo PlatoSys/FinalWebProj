@@ -29,6 +29,8 @@ use PDOException;
     subject VARCHAR(255)
 )";
 
+        $conn->exec($sql);
+
 
         $sql = "CREATE TABLE Students (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -39,6 +41,7 @@ use PDOException;
     password VARCHAR(255) NOT NULL,
     status VARCHAR(255) NOT NULL  
 )";
+        $conn->exec($sql);
 
         $sql = "CREATE TABLE Events (
     eventid INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -48,6 +51,8 @@ use PDOException;
     eventtime time,
     eventdate date 
 )";
+        $conn->exec($sql);
+
 
         $sql = "CREATE TABLE Subjects (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -56,7 +61,7 @@ use PDOException;
 )";
 
         $conn->exec($sql);
-        echo "post database was created" . PHP_EOL;
+        echo "database was created" . PHP_EOL;
 
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();

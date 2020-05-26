@@ -7,6 +7,12 @@ use app\database\database;
 
 use app\IRequest;
 use app\Router;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require '../vendor/autoload.php';
 
 class RegisterController
 {
@@ -89,6 +95,31 @@ class RegisterController
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)){
                 $temp  = true;
             };
+            $mail = new PHPMailer(false);
+
+            try {
+                //Server settings
+                $mail->SMTPDebug = 1;                      // Enable verbose debug output
+                $mail->isSMTP();                                            // Send using SMTP
+                $mail->Host       = 'smtp.mailtrap.io';                    // Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = '2c65f47d0b6866';                     // SMTP username
+                $mail->Password   = '3b7a61fd997183';                               // SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+                $mail->setFrom('moodlesystem@gmail.com', 'New Account Creation');
+                $mail->addAddress($data['email']);
+                $mail->isHTML(true);
+                $mail->Subject = 'Welcome to our MoodleSystem';
+                $mail->AltBody = "Here is your credentials <br> User :" . $data["email"] . "<br>" . "Password : " . $data['passwd'] . "<br> Thank You!";
+                $mail->Body = "Here is your credentials <br> User :" . $data["email"] . "<br>" . "Password : " . $data['passwd'] . "<br> Thank You!";
+
+    $mail->send();
+                $mailerror =  'Message has been sent';
+            } catch (Exception $e) {
+                $mailerror = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         }
         if(empty($errors)) {
             session_destroy();

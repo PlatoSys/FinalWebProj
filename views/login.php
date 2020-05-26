@@ -10,8 +10,6 @@
             </div>
         </div>
 
-
-
         <div class="form-group col-md-3 ">
             <label for="userpassword" class="center">Password</label>
             <input type="password" class="form-control <?php echo isset($errors['userpassword']) ? ' is-invalid' : '' ?>"
