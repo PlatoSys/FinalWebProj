@@ -96,16 +96,15 @@ class database
     }
     public function removePastEvents(){
         $statement = $this->pdo->prepare("DELETE FROM Events
-                                                            where eventdate < current_timestamp() or eventdate is null;");
+                                                            where (eventdate <= current_timestamp() and eventtime < current_time()) or eventdate is null;");
         return $statement->execute();
     }
 
-    public function createEvent($email,$eventname,$eventduration,$eventdate,$eventtime){
-        $statement = $this->pdo->prepare("insert into Events (email,eventname,eventduration,eventdate,eventtime) 
-                                                    Values (:email, :eventname, :eventduration, :eventdate, :eventtime)");
+    public function createEvent($email,$eventname,$eventdate,$eventtime){
+        $statement = $this->pdo->prepare("insert into Events (email,eventname,eventdate,eventtime) 
+                                                    Values (:email, :eventname, :eventdate, :eventtime)");
         $statement->bindValue(':email',$email);
         $statement->bindValue(':eventname',$eventname);
-        $statement->bindValue(':eventduration',$eventduration);
         $statement->bindValue(':eventdate',$eventdate);
         $statement->bindValue(':eventtime',$eventtime);
         return $statement->execute();
@@ -149,10 +148,15 @@ class database
     public function getTasks()
     {
         $statement = $this->pdo->prepare("select * FROM Moodle.Tasks;");
-//        $statement->bindValue(':subject',$subject);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+    public function deadlineTasks()
+    {
+        $statement = $this->pdo->prepare("DELETE FROM Tasks
+                                                            where deadlinedate < current_timestamp();");
+        return $statement->execute();
     }
 
 }

@@ -1,4 +1,4 @@
-<title>Log In</title>
+<title xmlns="http://www.w3.org/1999/html">Log In</title>
 <form method="POST" action="/login" novalidate>
     <div class="container forlogin">
         <div class="form-group col-md-3 mt-3 nav-justified">
@@ -18,11 +18,7 @@
                 <?php echo $errors['userpassword'] ?? '' ?>
             </div>
         </div>
-        <div class="form-group col-md-3 ">
-            <div>
-                <a href = 'Forgetpassword.php'>Forget password?</a>
-            </div>
-        </div>
+
 
         <button type="submit" class="btn btn-primary md-2 ml-5" name="loginbtn">Log In</button>
         <button type="submit" class="btn btn-primary md-2 ml-4" name="signupbtn">Sign Up</button>

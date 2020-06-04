@@ -6,8 +6,6 @@
                 <form action="/createevent" method="post">
                     <label for="fname">Event Name</label> <br>
                     <input type="text" id="fname" name="eventname" placeholder="Event Name"> <br>
-                    <label for="lname">Event Duration</label> <br>
-                    <input type="text" id="lname" name="duration" placeholder="Enter Event duration in minutes">
 
                     <label for="dateofbirth">Event Date</label> <br>
                     <input type="date" name="eventdate" id="date"> <br>

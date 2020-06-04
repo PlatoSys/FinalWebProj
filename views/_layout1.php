@@ -8,6 +8,17 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
+        .recovery {
+            background: none!important;
+            border: none;
+            padding: 0!important;
+            /*optional*/
+            font-family: arial, sans-serif;
+            /*input has OS specific font-family*/
+            color: #069;
+            text-decoration: underline;
+            cursor: pointer;
+        }
         .container {
             margin-top: 0;
             margin-left: 35%;

@@ -6,7 +6,6 @@ class Router
     protected $routes = [];
     protected $postRoutes = [];
     protected $request = null;
-
     /**
      * Router constructor.
      * @param $request
@@ -69,7 +68,7 @@ class Router
 
         $content = $this->renderOnlyView($view,$params);
         ob_start();
-        if($view == 'register' or $view == 'login')  include_once __DIR__.'/views/_layout1.php';
+        if($view == 'register' or $view == 'login' or $view == 'password_recovery')  include_once __DIR__.'/views/_layout1.php';
         else include_once __DIR__.'/views/_layout.php';
         return ob_get_clean();
     }

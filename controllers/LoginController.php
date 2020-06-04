@@ -2,11 +2,17 @@
 
 namespace app\controllers;
 use app\database\database;
+use app\IRequest;
 use app\Router;
 
 class LoginController
 {
-    public function login(\app\IRequest $request,Router $router)
+    /**
+     * @param IRequest $request
+     * @param Router $router
+     * @return false|string
+     */
+    public function login(IRequest $request, Router $router)
     {
         session_start();
         define('REQUIRED_FIELD_ERROR', 'This field is required');
@@ -53,9 +59,10 @@ class LoginController
             setcookie("birthdate",$info1[0]['birthdate'],time() + 25000);
             setcookie("email",$info1[0]['email'],time() + 25000);
             setcookie("status",$info1[0]['status'],time() + 25000);
-            return $router->renderView('/', $params);
+            header('Location: /');
         } else
             return $router->renderView('login', $params);
     }
+
 
 }

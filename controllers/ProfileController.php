@@ -50,7 +50,7 @@ class ProfileController
 
             try {
                 //Server settings
-                $mail->SMTPDebug = 1;                      // Enable verbose debug output
+                $mail->SMTPDebug = 0;                      // Enable verbose debug output
                 $mail->isSMTP();                                            // Send using SMTP
                 $mail->Host       = 'smtp.mailtrap.io';                    // Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication

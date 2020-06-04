@@ -8,7 +8,6 @@ use app\database\database;
 use app\IRequest;
 use app\Router;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
@@ -91,7 +90,7 @@ class RegisterController
 
         if(empty($errors)) {
             $input->insertStudent($data['registeruser'], $data['surname'], $date, $data['email'], password_hash($data['passwd'], PASSWORD_BCRYPT), $data['userstatus']);
-            $filepath = "views/Images/" . $data['email'] . '.png';
+            $filepath = "C:/xampp\htdocs\Final\public\Images/" . $data['email'] . '.png';
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)){
                 $temp  = true;
             };
@@ -99,7 +98,7 @@ class RegisterController
 
             try {
                 //Server settings
-                $mail->SMTPDebug = 1;                      // Enable verbose debug output
+                $mail->SMTPDebug = 0;                      // Enable verbose debug output
                 $mail->isSMTP();                                            // Send using SMTP
                 $mail->Host       = 'smtp.mailtrap.io';                    // Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication

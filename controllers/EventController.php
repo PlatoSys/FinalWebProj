@@ -18,7 +18,7 @@ class EventController
 
         $info = new database();
 
-        $info->createEvent($_COOKIE['email'],$data['eventname'],$data['duration'],$data['eventdate'],$data['time']);
+        $info->createEvent($_COOKIE['email'],$data['eventname'],$data['eventdate'],$data['time']);
 
         return $router->renderView('createevent',$params);
     }

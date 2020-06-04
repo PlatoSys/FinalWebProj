@@ -15,6 +15,7 @@ class HomeworkController
         $errors = [];
 
         $subj = new database();
+        $subj->deadlineTasks();
         $subj = $subj->getSubject($_COOKIE['email']);
         $data = $subj;
 
@@ -27,13 +28,12 @@ class HomeworkController
             $info->addTask($_COOKIE['email'],$_POST['subjectselection'],$_POST['taskname'],$_POST['deadline']);
         }
 
-        $filepath = "../views/homework/" . $_COOKIE['email'] . $_POST['taskname'] . '.pdf';
+        $filepath = "../views/homework/" . $_COOKIE['email'] . ' ' . $_POST['taskname'] . '.pdf';
         if(isset($_FILES["file"]["tmp_name"])){
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)){
                 $temp  = true;
             };
         }
-
 
 
         $params = [
